@@ -1,0 +1,30 @@
+<?php
+class Usermodel extends CI_model{
+
+
+
+public function register_user($user){
+
+
+$this->db->insert('customer', $user);
+
+}
+// public function place_order(){
+//   $this->db->
+// }
+ public function email_check($email){
+
+  $this->db->select('*');
+  $this->db->from('customer');
+  $this->db->where('email',$email);
+  $query=$this->db->get();
+
+  if($query->num_rows()>0){
+    return false;
+  }else{
+    return true;
+  }
+
+}
+}
+?>
